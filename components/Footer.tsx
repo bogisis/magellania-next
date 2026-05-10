@@ -6,12 +6,12 @@ import { content } from '@/lib/content';
 
 const pageToHref: Record<string, string> = {
   home: '/',
-  tours: '/tours/',
-  about: '/about/',
+  tours: '/#tours',
+  about: '/#about',
   blog: '/blog/',
-  reviews: '/reviews/',
-  prices: '/prices/',
-  contact: '/contact/',
+  reviews: '/#reviews',
+  prices: '/#tours',
+  contact: '/#contact',
   faq: '/faq/',
 };
 
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
         <div>
           <span style={colHeading}>Маршруты</span>
-          {C.tourLinks.map((t: string) => <Link key={t} href="/tours/" style={linkStyle}>{t}</Link>)}
+          {C.tourLinks.map((t: string) => <Link key={t} href="/#tours" style={linkStyle}>{t}</Link>)}
         </div>
         <div>
           <span style={colHeading}>Компания</span>
@@ -77,7 +77,18 @@ export default function Footer() {
         </div>
         <div>
           <span style={colHeading}>Контакты</span>
-          {C.contacts.map((t: string) => <span key={t} style={{ ...linkStyle, cursor:'default' }}>{t}</span>)}
+          {C.contacts.map((t: string) => {
+            const isEmail = t.includes('@');
+            const isPhone = /^\+?\d[\d\s\-()]+$/.test(t.trim());
+            if (isEmail) {
+              return <a key={t} href={`mailto:${t}`} style={linkStyle}>{t}</a>;
+            }
+            if (isPhone) {
+              const cleanPhone = t.replace(/[\s\-()]/g, '');
+              return <a key={t} href={`https://wa.me/${cleanPhone.replace('+', '')}`} target="_blank" rel="noopener noreferrer" style={linkStyle}>{t}</a>;
+            }
+            return <span key={t} style={{ ...linkStyle, cursor:'default' }}>{t}</span>;
+          })}
         </div>
       </div>
       <div style={bottomStyle}>

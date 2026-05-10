@@ -55,8 +55,8 @@
         "label": "довольных гостей"
       },
       {
-        "num": "6+",
-        "label": "лет на краю света"
+        "num": "3+",
+        "label": "года на краю света"
       },
       {
         "num": "3",
@@ -2088,7 +2088,7 @@
     "contacts": [
       {
         "label": "WhatsApp",
-        "value": "+54 9 2901 XXX-XXX"
+        "value": "+54 11 27 440-161"
       },
       {
         "label": "Telegram",
@@ -2096,7 +2096,7 @@
       },
       {
         "label": "Email",
-        "value": "info@magellania.travel"
+        "value": "manager@magellania.net"
       }
     ],
     "form": {
@@ -2130,7 +2130,7 @@
       "tourSelectDefault": "Выберите маршрут",
       "tourSelectCustom": "Индивидуальная программа",
       "submitLabel": "Отправить заявку",
-      "freeNote": "Первая консультация — бесплатно"
+      "freeNote": "Консультация — бесплатно"
     },
     "success": {
       "heading": "Отлично!",

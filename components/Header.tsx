@@ -5,15 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { content } from '@/lib/content';
 
+// Anchored sections scroll on homepage; blog/tours keep separate pages for SEO
 const pageToHref: Record<string, string> = {
   home: '/',
-  tours: '/tours/',
-  about: '/about/',
+  tours: '/#tours',
+  about: '/#about',
   blog: '/blog/',
-  reviews: '/reviews/',
-  prices: '/prices/',
-  contact: '/contact/',
-  faq: '/faq/',
+  reviews: '/#reviews',
+  contact: '/#contact',
 };
 
 export default function Header() {
@@ -38,13 +37,12 @@ export default function Header() {
 
   const currentPage = (() => {
     if (pathname === '/') return 'home';
-    for (const [page, href] of Object.entries(pageToHref)) {
-      if (page !== 'home' && pathname.startsWith(href)) return page;
-    }
+    if (pathname.startsWith('/blog')) return 'blog';
+    if (pathname.startsWith('/tours')) return 'tours';
     return '';
   })();
 
-  const isHero = currentPage === 'home';
+  const isHero = pathname === '/';
   const dark = isHero && !scrolled;
 
   const navStyle: React.CSSProperties = {
@@ -139,7 +137,7 @@ export default function Header() {
         )}
 
         {!isMobile && (
-          <Link href="/contact/" style={ctaStyle}>
+          <Link href="/#contact" style={ctaStyle}>
             {C.nav.cta}
           </Link>
         )}
@@ -158,7 +156,7 @@ export default function Header() {
           {links.map(({ label, page }: { label: string; page: string }) => (
             <Link key={page} href={pageToHref[page] || '/'} style={mobileLinkStyle(page)} onClick={() => setMenuOpen(false)}>{label}</Link>
           ))}
-          <Link href="/contact/" style={{ ...ctaStyle, marginTop: 16, width: '100%', padding: '12px', textAlign: 'center', justifyContent: 'center' } as React.CSSProperties}
+          <Link href="/#contact" style={{ ...ctaStyle, marginTop: 16, width: '100%', padding: '12px', textAlign: 'center', justifyContent: 'center' } as React.CSSProperties}
             onClick={() => setMenuOpen(false)}>
             {C.nav.cta}
           </Link>

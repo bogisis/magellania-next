@@ -42,10 +42,10 @@ export default function HomePage() {
     <main>
       <SchemaOrg schema={schema} />
       <Hero />
-      <ToursSection />
-      <AboutSection />
-      <ReviewsSection limit={3} />
-      <ContactForm />
+      <div id="tours"><ToursSection /></div>
+      <div id="about"><AboutSection /></div>
+      <div id="reviews"><ReviewsSection limit={3} /></div>
+      <div id="contact"><ContactForm /></div>
     </main>
   );
 }

@@ -135,7 +135,7 @@ export default function Hero() {
           display: 'flex', gap: isMobile ? 10 : 12, alignItems: 'stretch',
           flexDirection: isMobile ? 'column' : 'row',
         }}>
-          <Link href="/tours/" style={{
+          <Link href="/#tours" style={{
             fontFamily: "'Lora',Georgia,serif", fontSize: 12, fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase',
             padding: '13px 28px', borderRadius: 2, border: 'none', cursor: 'pointer',
@@ -145,7 +145,7 @@ export default function Hero() {
           }}>
             {C.cta1}
           </Link>
-          <Link href="/contact/" style={{
+          <Link href="/#contact" style={{
             fontFamily: "'Lora',Georgia,serif", fontSize: 12, fontWeight: 600,
             letterSpacing: '0.08em', textTransform: 'uppercase',
             padding: '13px 28px', borderRadius: 2, cursor: 'pointer',
